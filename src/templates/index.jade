@@ -1,0 +1,329 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui")
+        title Hello world !
+        link(href="http://gulpjs.com/favicon.ico", rel="shortcut icon", type="image/x-icon")
+        link(href="css/libs/bootstrap.min.css", rel="stylesheet")
+        link(href="css/main.css", rel="stylesheet")
+    body
+        nav(class="navbar navbar-default navbar-fixed-top", role="banner")
+            div(class="container")
+                div(class="navbar-header")
+                    button(class="navbar-toggle", type="button", data-toggle="collapse", data-target=".navbar-collapse")
+                        span(class="sr-only") Toggle navigation
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+              
+                    a(href="/" class="navbar-brand") Yann Isabel
+            
+                nav(class="collapse navbar-collapse", role="navigation")
+                    ul(class="nav navbar-nav")
+                        li
+                            a(href="#start") Getting Started
+                        li
+                            a(href="#sec") Download
+                        li
+                            a(href="https://github.com/yannisabel") Github
+                        li
+                            a(href="http://yannisabel.com", target="_blank") My website
+
+        
+        div(id="masthead")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-7")
+                        h1 <span>Documentation&nbsp;:</span><br/>Gulp Workflow with SASS and JADE
+                    div(class="col-md-3 col-md-offset-2")
+                        img(src="/images/gulp.png", class="img-responsive")
+        
+        div(class="container")
+            div(class="row")
+                div(class="col-md-3", id="leftCol")
+                    ul(class="nav nav-stacked", id="sidebar")
+                        li
+                            a(href="#start") 1. Getting Started
+                        li
+                            a(href="#tasks") 2. Tasks
+                        li
+                            a(href="#jade") 3. Jade docs
+                        li
+                            a(href="#sass") 4. Sass docs
+                
+                div(class="col-md-9 content-doc")
+                    h2(id="start") 1. Getting Started
+                    p <a href="http://gulpjs.com/" title="Gulpjs">Gulp</a> is a Task Runner that can help you to automate your development workflow.<br/>This workflow gathers some cool tasks like compiling <a href="http://jade-lang.com/" title="jade officiel website">JADE</a> files into HTML files, compiling <a href="http://sass-lang.com/" title="SASS official website">SASS</a> files into CSS files, minifying images and browser reloading. Let's start with the beginning. If you download or clone the gulp-workflow here is the structure of the directory :
+                
+                    pre. 
+                        |- gulp-workflow/
+                        	|- src/
+                        	    |- fonts/
+                        	    |- images/
+                        	    |- js/
+                        	    |- scss/
+                        		|- templates/
+                        		    |- index.jade
+                        	|- web/
+                        	    |- fonts/
+                        	    |- images/
+                        	    |- js/
+                        	    |- css/
+                        		|- index.html
+                        		
+                        	|- gulpfile.js
+                        	|- node_modules/
+                        	|- package.json                    
+                    
+                    br
+                    blockquote What can we expect to do with Gulp ?
+                    p Almost every task you do in development a thousand time a day. Move files or directory, minify javascript files, concatenate them, prettify your code and much more! Gulp is your Task Runner, it can automatize your workflow.
+                    
+                
+                    h2(id="tasks") 2. Tasks
+                    p In the <code>gulpfile.js</code> you have the requirements packages. In this file just three of them are called to avoid a too long list. There are Gulp first, gulp-load-plugins and browser-sync. All the rest are called by the gulp-load-plugins. With this method we save almost ten lines.
+                    h3 Run tasks
+                    p When you run gulp in command line it was a task to. <code>gulp</code> command is the shortcut to write the <code>gulp default</code> commande.
+                    p You can run a task alone. You just need to add the task name to the gulp command. This is an example if you just want to compile your SASS :
+                    code gulp sass
+                
+                    p You will need to leave the server to run this command. The default task is made for run all the tasks and watch all modification. So if you want a refresh you can just modify your files and see what's happening in real time.
+                
+                    h3 Tasks Options
+                    p All packages have their own options. Generally you can find them on the <a href="https://www.npmjs.com/" title="NPM officiel website">NPM website</a>. But here is some options :
+                    
+                    p gulp-cssbeautify
+                    
+                    pre. 
+                        indent: '  ' //4 space by default but you can change
+                        openbrace: 'separate-line' //'end-of-line' by default
+                        autosemicolon: true //Can be set to false
+                        
+                    p gulp-cssprettify
+                    
+                    pre. 
+                        indent_size: '4' //Can be change by any number
+                        preserve_newlines: true //Can be set to false
+                        
+                    p gulp-sass
+                        
+                    pre. 
+                        outputStyle: 'compressed' //Different values : nested, expanded, compact, compressed. 'nested' by default.
+                        p gulp-cssprettify
+                        
+                    p gulp-uglify
+                    
+                    pre. 
+                        indent_start: 0     // start indentation on every line (only when 'beautify')
+                        indent_level: 4,     // indentation level (only when 'beautify')
+                        beautify: false, // beautify output?
+                        bracketize: false, // use brackets every time
+                        comments: false, // output comments?
+                        semicolons: true,  // use semicolons to separate statements? (otherwise, newlines)
+                        
+                    h2(id="jade") 3. Jade docs
+                    p This documentation is a part of the official documentation. If you want more go to the <a href="http://jade-lang.com/" title="Jade Official Website">Jade website</a>.
+                    
+                    h3 Tags
+                    p By default, text at the start of a line (or after only white space) represents an html tag. Indented tags are nested, creating the tree like structure of html.
+                    
+                    pre.
+                        ul
+                            li Item A
+                            li Item B
+                            li Item C
+                    p Output
+                    pre &lt;ul>
+                        |   &lt;li>Item A&lt;/li>
+                        |   &lt;li>Item B&lt;/li>
+                        |   &lt;li>Item C&lt;/li>
+                        |&lt;/ul>
+                        
+                    p Jade also knows which elements are self closing:
+                    
+                    code img
+                    p Output
+                    code &lt;img/>
+                    
+                    h3 Attributes
+                    
+                    p Tag attributes look similar to html, however their values are just regular JavaScript.
+                    
+                    pre.
+                        a(href='google.com') Google
+                        a(class='button', href='google.com') Google    
+                    p Output
+                    pre &lt;a href="google.com">Google&lt;/a>&lt;a href="google.com" class="button">Google&lt;/a>
+                    
+                    h3 Class Literal
+                    p Classes may be defined using a .classname syntax:
+                    code a.button
+                    p Output
+                    code &lt;a class="button">&lt;/a>
+                    
+                    p Since div's are such a common choice of tag, it is the default if you omit the tag name:
+                    code .content
+                    p Output
+                    code &lt;div class="content">&lt;/div>
+                    
+                    p Same for ID
+                    
+                    h3 Unbeffered Code
+                    p Jade makes it possible to write inline JavaScript code in your templates.
+                    p Unbuffered code starts with - does not add any output directly, e.g.
+                    pre - for (var x = 0; x < 3; x++)
+                        |li item
+                    p Output
+                    pre &lt;li>item&lt;/li>
+                        |&lt;li>item&lt;/li>
+                        |&lt;li>item&lt;/li>
+                        
+                    h3 Conditionals
+                    p Jade's first-class conditional syntax allows for optional parenthesis, and you may now omit the leading - otherwise it's identical, still just regular javascript:
+                    pre - var user = { description: 'foo bar baz' }
+                        |- var authorised = false
+                        #user
+                        |   if user.description
+                        |       h2 Description
+                        |       p.description= user.description
+                        |   else if authorised
+                        |       h2 Description
+                        |       p.description.
+                        |           User has no description,
+                        |           why not add one...
+                        |   else
+                        |       h1 Description
+                        |       p.description User has no description
+                    p Output
+                    pre &lt;div id="user">
+                        |    &lt;h2>Description&lt;/h2>
+                        |    &lt;p class="description">foo bar baz&lt;/p>
+                        |&lt;/div>
+                        
+                    p There are a lot of things to do with Jade ! Just try it !
+                    
+                    h2(id="sass") 4. SASS docs
+                    p This documentation is a part of the official documentation. If you want more go to the <a href="http://sass-lang.com/" title="SASS Official Website">Sass website</a>.
+                    
+                    h3 Variables
+                    p Think of variables as a way to store information that you want to reuse throughout your stylesheet. You can store things like colors, font stacks, or any CSS value you think you'll want to reuse. Sass uses the $ symbol to make something a variable. Here's an example:
+                    pre $font-stack: Helvetica, sans-serif;
+                        |$primary-color: #333;
+                        | 
+                        |body {
+                        |   font: 100% $font-stack;
+                        |   color: $primary-color;
+                        |}
+                    p Output
+                    pre body {
+                        |    font: 100% Helvetica, sans-serif;
+                        |    color: #333;
+                        |}
+                        
+                    h3 Nesting
+                    p When writing HTML you've probably noticed that it has a clear nested and visual hierarchy. CSS, on the other hand, doesn't.
+                    p Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML. Be aware that overly nested rules will result in over-qualified CSS that could prove hard to maintain and is generally considered bad practice.
+                    p With that in mind, here's an example of some typical styles for a site's navigation:
+                    pre nav {
+                        |    ul {
+                        |        margin: 0;
+                        |        padding: 0;
+                        |        list-style: none;
+                        |    }
+                        |   
+                        |    li { display: inline-block; }
+                        |   
+                        |    a {
+                        |        display: block;
+                        |        padding: 6px 12px;
+                        |        text-decoration: none;
+                        |    }
+                        |}
+                    p Output
+                    pre nav ul {
+                        |    margin: 0;
+                        |    padding: 0;
+                        |    list-style: none;
+                        |}
+                        |   
+                        |nav li {
+                        |    display: inline-block;
+                        |}
+                        |   
+                        |nav a {
+                        |    display: block;
+                        |    padding: 6px 12px;
+                        |    text-decoration: none;
+                        |}
+                        
+                    h3 mixins
+                    p Some things in CSS are a bit tedious to write, especially with CSS3 and the many vendor prefixes that exist. A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values to make your mixin more flexible. A good use of a mixin is for vendor prefixes. Here's an example for <code>border-radius</code>.
+                    
+                    pre @mixin border-radius($radius) {
+                        |    -webkit-border-radius: $radius;
+                        |    -moz-border-radius: $radius;
+                        |    -ms-border-radius: $radius;
+                        |    border-radius: $radius;
+                        |}
+                        |   
+                        |.box { @include border-radius(10px); }
+                    p To create a mixin you use the <code>@mixin</code> directive and give it a name. We've named our mixin border-radius. We're also using the variable <code>$radius</code> inside the parentheses so we can pass in a radius of whatever we want. After you create your mixin, you can then use it as a CSS declaration starting with <code>@include</code> followed by the name of the mixin. When your CSS is generated it'll look like this:
+                    pre .box {
+                        |    -webkit-border-radius: 10px;
+                        |    -moz-border-radius: 10px;
+                        |    -ms-border-radius: 10px;
+                        |    border-radius: 10px;
+                        |}
+                        
+                    h3 Extend/Inheritance
+                    p This is one of the most useful features of Sass. Using <code>@extend</code> lets you share a set of CSS properties from one selector to another. It helps keep your Sass very DRY. In our example we're going to create a simple series of messaging for errors, warnings and successes.
+                    
+                    pre .message {
+                        |    border: 1px solid #ccc;
+                        |    padding: 10px;
+                        |    color: #333;
+                        |}
+                        |   
+                        |.success {
+                        |    @extend .message;
+                        |    border-color: green;
+                        |}
+                        |   
+                        |.error {
+                        |    @extend .message;
+                        |    border-color: red;
+                        |}
+                        |   
+                        |.warning {
+                        |    @extend .message;
+                        |    border-color: yellow;
+                        |}
+                    p What the above code does is allow you to take the CSS properties in <code>.message</code> and apply them to <code>.success</code>, <code>.error</code>, & <code>.warning</code>. The magic happens with the generated CSS, and this helps you avoid having to write multiple class names on HTML elements. This is what it looks like:
+                    pre .message, .success, .error, .warning {
+                        |    border: 1px solid #cccccc;
+                        |    padding: 10px;
+                        |    color: #333;
+                        |}
+                        |   
+                        |.success {
+                        |    border-color: green;
+                        |}
+                        |   
+                        |.error {
+                        |    border-color: red;
+                        |}
+                        |   
+                        |.warning {
+                        |    border-color: yellow;
+                        |}
+                        
+                    h3 functions
+                    p You can also make function like in Javascript or PHP. There is a function I made for accessibility color. It can choose the best contrast between font color and the background.
+                    script(src="https://gist.github.com/yannisabel/aa94fb081fe5b51dbb91818707fdf9c1.js")
+                    
+                    p I hope you like this workflow! Don't hesitate to make a pull request!
+                                
+        script(src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js")
+        script(src="js/bootstrap.min.js")
+        script(src="js/main.js")

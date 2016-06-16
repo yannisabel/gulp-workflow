@@ -1,0 +1,208 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto/roboto_regular/Roboto-Regular.eot');
+    src: url('../fonts/roboto/roboto_regular/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto_regular/Roboto-Regular.woff') format('woff'),
+         url('../fonts/roboto/roboto_regular/Roboto-Regular.ttf') format('truetype'),
+         url('../fonts/roboto/roboto_regular/Roboto-Regular.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto/roboto_italic/Roboto-Italic.eot');
+    src: url('../fonts/roboto/roboto_italic/Roboto-Italic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto_italic/Roboto-Italic.woff') format('woff'),
+         url('../fonts/roboto/roboto_italic/Roboto-Italic.ttf') format('truetype'),
+         url('../fonts/roboto/roboto_italic/Roboto-Italic.svg#robotoitalic') format('svg');
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto/roboto_light/Roboto-Light.eot');
+    src: url('../fonts/roboto/roboto_light/Roboto-Light.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto_light/Roboto-Light.woff') format('woff'),
+         url('../fonts/roboto/roboto_light/Roboto-Light.ttf') format('truetype'),
+         url('../fonts/roboto/roboto_light/Roboto-Light.svg#robotolight') format('svg');
+    font-weight: lighter;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto/roboto_medium/Roboto-Medium.eot');
+    src: url('../fonts/roboto/roboto_medium/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto_medium/Roboto-Medium.woff') format('woff'),
+         url('../fonts/roboto/roboto_medium/Roboto-Medium.ttf') format('truetype'),
+         url('../fonts/roboto/roboto_medium/Roboto-Medium.svg#robotomedium') format('svg');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto/roboto_mediumitalic/Roboto-MediumItalic.eot');
+    src: url('../fonts/roboto/roboto_mediumitalic/Roboto-MediumItalic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto_mediumitalic/Roboto-MediumItalic.woff') format('woff'),
+         url('../fonts/roboto/roboto_mediumitalic/Roboto-MediumItalic.ttf') format('truetype'),
+         url('../fonts/roboto/roboto_mediumitalic/Roboto-MediumItalic.svg#robotomediumitalic') format('svg');
+    font-weight: 600;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto/roboto_bold/Roboto-Bold.eot');
+    src: url('../fonts/roboto/roboto_bold/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto_bold/Roboto-Bold.woff') format('woff'),
+         url('../fonts/roboto/roboto_bold/Roboto-Bold.ttf') format('truetype'),
+         url('../fonts/roboto/roboto_bold/Roboto-Bold.svg#robotobold') format('svg');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto/roboto_bolditalic/Roboto-BoldItalic.eot');
+    src: url('../fonts/roboto/roboto_bolditalic/Roboto-BoldItalic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/roboto/roboto_bolditalic/Roboto-BoldItalic.woff') format('woff'),
+         url('../fonts/roboto/roboto_bolditalic/Roboto-BoldItalic.ttf') format('truetype'),
+         url('../fonts/roboto/roboto_bolditalic/Roboto-BoldItalic.svg#robotobolditalic') format('svg');
+    font-weight: 700;
+    font-style: italic;
+}
+@import 'variables';
+@import 'colors';
+@import 'mixins';
+@import 'functions';
+*,
+*:after,
+*:before{
+    margin: 0;
+    padding: 0;
+    @include border-box;
+}
+body{
+    padding: 50px 0 0 ;
+    background: $white;
+    font-family: $fontDefault;
+    line-height: 2em;
+    color: $fontColorBase;
+}
+h1{
+    margin-top:0;
+    font-size: $fontXLarge;
+    font-weight:600;
+    line-height: 40px;
+    span{
+        display:inline-block;
+        padding-bottom:0.5em;
+        font-weight:700;
+        text-transform: uppercase;
+        color: $colorGrayLight;
+    }
+}
+h2{
+    margin: 0 0 1.5em;
+    border-bottom: 1px solid $colorGrayLighter;
+    padding-bottom: 0.5em;
+    font-weight:normal;
+    text-transform: uppercase;
+    color: $blue;
+    &:nth-child(n+2){
+        margin-top: 2em;
+    }
+}
+img{
+    width: auto;
+    max-width: 100%;
+    height: auto !important;
+}
+a{
+    outline:none;
+    color:inherit;
+}
+ul{
+    @include uList(inside, disc)
+}
+ol{
+    @include auto-numbers(li, ". ", item, ol);
+    li{
+        ul, ol{
+            padding-left:18px;
+        }
+    }
+}
+pre {
+    border: 1px solid $colorGrayLighter;
+    border-radius: 0;
+    background-color: lighten($colorGrayLighter, 80%);;
+    color: $blue;
+}
+code {
+    border-radius:0;
+    background-color: $blueCode;
+    color: $blue;
+}
+.right{
+    float:right;
+}
+.left{
+    float:left;
+}
+.navbar{
+    border:none;
+    background:$blue;
+    & a{
+        color:colorOnBackground($blue) !important;
+        &:hover, &:focus{
+            background:$colorGrayLighter !important;
+        }
+    }
+}
+#masthead{
+    margin: 20px 0 40px;
+    border-bottom:1px solid $colorGrayLighter;
+    padding-bottom:40px;
+}
+.container{
+    p{
+        margin-top:1.5em;
+        margin-bottom:0;
+        a{
+            font-weight:600;
+            text-decoration:underline;
+            color:$blue;
+        }
+    }
+    #sidebar{
+        li.active {
+            background:$blue;
+            color:colorOnBackground($blue);
+            & a:hover{
+                background:$colorGrayLighter;
+                color:colorOnBackground($colorGrayLighter);
+            }
+            & a:focus{
+                background:transparent;
+                color:colorOnBackground($blue);
+            }
+        }
+    }
+    .nav>li>a:focus {
+        background-color: transparent;
+    }
+    .affix-top,.affix{
+     position: static;
+    }
+    @media (min-width: 992px) {
+        #sidebar.affix-top {
+            position: static;
+            top:30px;
+            width:228px;
+        }
+
+        #sidebar.affix {
+            position: fixed;
+            top:70px;
+            width:228px;
+        }
+    }
+    .content-doc{
+        padding-bottom:6em;
+        font-size:$fontBase !important;
+    }
+}
