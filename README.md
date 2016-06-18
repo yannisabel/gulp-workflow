@@ -18,8 +18,13 @@ It installs all dependancies found in the `package.json`.
 
 ## 3\. Run it
 
-Just run the following command line:
+You need to install gulp globally with this command:
+
+`npm install gulp -g`
+
+Then just run the following command line:
+
 `gulp`
 
-It execute the default task and launch the server.
+It executes the default task and launch the server.
 I think it's better to show you this workflow in action. So the `index.html` is a kind of documentation and it can help you with some option.
