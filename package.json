@@ -1,6 +1,6 @@
 {
   "name": "gulp-workflow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a Gulp workflow with Jade, SASS, browser synchronisation and autoreload.",
   "main": "gulpfile.js",
   "devDependencies": {
