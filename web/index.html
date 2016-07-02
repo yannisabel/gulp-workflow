@@ -19,10 +19,10 @@
                 </div>
                 <nav role="navigation" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#start">Getting Started</a></li>
-                        <li><a href="https://github.com/yannisabel/gulp-workflow">Download</a></li>
-                        <li><a href="https://github.com/yannisabel">Github</a></li>
-                        <li><a href="http://yannisabel.com" target="_blank">My website</a></li>
+                        <li><a href="#start" title="Getting Started">Getting Started</a></li>
+                        <li><a href="https://github.com/yannisabel/gulp-workflow" title="Download gulp-workflow">Download</a></li>
+                        <li><a href="https://github.com/yannisabel" title="">Github</a></li>
+                        <li><a href="http://yannisabel.com" title="" target="_blank">My website</a></li>
                     </ul>
                 </nav>
             </div>
@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-md-7">
                         <h1><span>Documentation&nbsp;:</span><br/>Gulp Workflow with SASS and JADE</h1></div>
-                    <div class="col-md-3 col-md-offset-2"><img src="/images/gulp.png" class="img-responsive"></div>
+                    <div class="col-md-3 col-md-offset-2"><img src="/images/gulp.png" alt="gulp logo" class="img-responsive"></div>
                 </div>
             </div>
         </div>
@@ -40,10 +40,10 @@
             <div class="row">
                 <div id="leftCol" class="col-md-3">
                     <ul id="sidebar" class="nav nav-stacked">
-                        <li><a href="#start">1. Getting Started</a></li>
-                        <li><a href="#tasks">2. Tasks</a></li>
-                        <li><a href="#jade">3. Jade docs</a></li>
-                        <li><a href="#sass">4. Sass docs</a></li>
+                        <li><a href="#start" title="Getting Started">1. Getting Started</a></li>
+                        <li><a href="#tasks" title="Tasks">2. Tasks</a></li>
+                        <li><a href="#jade" title="Jade doc">3. Jade doc</a></li>
+                        <li><a href="#sass" title="Sass doc">4. Sass doc</a></li>
                     </ul>
                 </div>
                 <div class="col-md-9 content-doc">
@@ -54,7 +54,7 @@
 	    |- fonts/
 	    |- images/
 	    |- js/
-	    |- scss/
+	    |- sass/
 	    |- templates/
 		    |- index.jade       
 	|- web/
@@ -64,10 +64,9 @@
 	    |- css/
 	    |- index.html	
 	|- gulpfile.js
-	|- node_modules/
 	|- package.json                    
 </pre><br>
-                    <blockquote>What can we expect to do with Gulp ?</blockquote>
+                    <blockquote>What can we expect to do with Gulp?</blockquote>
                     <p>Almost every task you do in development a thousand time a day. Move files or directory, minify javascript files, concatenate them, prettify your code and much more! Gulp is your Task Runner, it can automatize your workflow.</p>
                     <h2
                         id="tasks">2. Tasks</h2>
@@ -75,10 +74,10 @@
                             With this method we save almost ten lines.</p>
                         <h3>Run tasks</h3>
                         <p>When you run gulp in command line it was a task to. <code>gulp</code> command is the shortcut to write the <code>gulp default</code> commande.</p>
-                        <p>You can run a task alone. You just need to add the task name to the gulp command. This is an example if you just want to compile your SASS :</p><code>gulp sass</code>
+                        <p>You can run a task alone. You just need to add the task name to the gulp command. This is an example if you just want to compile your SASS:</p><code>gulp sass</code>
                         <p>You will need to leave the server to run this command. The default task is made for run all the tasks and watch all modification. So if you want a refresh you can just modify your files and see what's happening in real time.</p>
                         <h3>Tasks Options</h3>
-                        <p>All packages have their own options. Generally you can find them on the <a href="https://www.npmjs.com/" title="NPM officiel website">NPM website</a>. But here is some options :</p>
+                        <p>All packages have their own options. Generally you can find them on the <a href="https://www.npmjs.com/" title="NPM officiel website">NPM website</a>. But here is some options:</p>
                         <p>gulp-cssbeautify</p><pre>indent: '  ' //4 space by default but you can change
 openbrace: 'separate-line' //'end-of-line' by default
 autosemicolon: true //Can be set to false

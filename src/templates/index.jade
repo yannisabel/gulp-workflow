@@ -22,13 +22,13 @@ html
                 nav(class="collapse navbar-collapse", role="navigation")
                     ul(class="nav navbar-nav")
                         li
-                            a(href="#start") Getting Started
+                            a(href="#start", title="Getting Started") Getting Started
                         li
-                            a(href="https://github.com/yannisabel/gulp-workflow") Download
+                            a(href="https://github.com/yannisabel/gulp-workflow", title="Download gulp-workflow") Download
                         li
-                            a(href="https://github.com/yannisabel") Github
+                            a(href="https://github.com/yannisabel", title="") Github
                         li
-                            a(href="http://yannisabel.com", target="_blank") My website
+                            a(href="http://yannisabel.com", title="" target="_blank") My website
 
         
         div(id="masthead")
@@ -37,20 +37,20 @@ html
                     div(class="col-md-7")
                         h1 <span>Documentation&nbsp;:</span><br/>Gulp Workflow with SASS and JADE
                     div(class="col-md-3 col-md-offset-2")
-                        img(src="/images/gulp.png", class="img-responsive")
+                        img(src="/images/gulp.png", class="img-responsive", alt="gulp logo")
         
         div(class="container")
             div(class="row")
                 div(class="col-md-3", id="leftCol")
                     ul(class="nav nav-stacked", id="sidebar")
                         li
-                            a(href="#start") 1. Getting Started
+                            a(href="#start", title="Getting Started") 1. Getting Started
                         li
-                            a(href="#tasks") 2. Tasks
+                            a(href="#tasks", title="Tasks") 2. Tasks
                         li
-                            a(href="#jade") 3. Jade docs
+                            a(href="#jade", title="Jade doc") 3. Jade doc
                         li
-                            a(href="#sass") 4. Sass docs
+                            a(href="#sass", title="Sass doc") 4. Sass doc
                 
                 div(class="col-md-9 content-doc")
                     h2(id="start") 1. Getting Started
@@ -61,7 +61,7 @@ html
                         	    |- fonts/
                         	    |- images/
                         	    |- js/
-                        	    |- scss/
+                        	    |- sass/
                         	    |- templates/
                         		    |- index.jade       
                         	|- web/
@@ -71,11 +71,10 @@ html
                         	    |- css/
                         	    |- index.html	
                         	|- gulpfile.js
-                        	|- node_modules/
                         	|- package.json                    
                     
                     br
-                    blockquote What can we expect to do with Gulp ?
+                    blockquote What can we expect to do with Gulp?
                     p Almost every task you do in development a thousand time a day. Move files or directory, minify javascript files, concatenate them, prettify your code and much more! Gulp is your Task Runner, it can automatize your workflow.
                     
                 
@@ -83,13 +82,13 @@ html
                     p In the <code>gulpfile.js</code> you have the requirements packages. In this file just three of them are called to avoid a too long list. There are Gulp first, gulp-load-plugins and browser-sync. All the rest are called by the gulp-load-plugins. With this method we save almost ten lines.
                     h3 Run tasks
                     p When you run gulp in command line it was a task to. <code>gulp</code> command is the shortcut to write the <code>gulp default</code> commande.
-                    p You can run a task alone. You just need to add the task name to the gulp command. This is an example if you just want to compile your SASS :
+                    p You can run a task alone. You just need to add the task name to the gulp command. This is an example if you just want to compile your SASS:
                     code gulp sass
                 
                     p You will need to leave the server to run this command. The default task is made for run all the tasks and watch all modification. So if you want a refresh you can just modify your files and see what's happening in real time.
                 
                     h3 Tasks Options
-                    p All packages have their own options. Generally you can find them on the <a href="https://www.npmjs.com/" title="NPM officiel website">NPM website</a>. But here is some options :
+                    p All packages have their own options. Generally you can find them on the <a href="https://www.npmjs.com/" title="NPM officiel website">NPM website</a>. But here is some options:
                     
                     p gulp-cssbeautify
                     
