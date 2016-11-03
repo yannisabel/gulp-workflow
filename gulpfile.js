@@ -35,8 +35,11 @@ gulp.task('browserSync', function() {
 
 // Duplicate fonts folder in webPath
 gulp.task('fonts', function() {
-  return gulp.src(devPaths.fonts + '/**/*')
-  .pipe(gulp.dest(webPaths.fonts));
+    return gulp.src(devPaths.fonts + '/**/*')
+        .pipe(gulp.dest(webPaths.fonts));
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
 
 // Duplicate images folder in webPath and minify them
@@ -46,6 +49,9 @@ gulp.task('imagemin', function(){
             interlaced: true
         })))
         .pipe(gulp.dest(webPaths.img));
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
 
 // Compile jade templates to html pages
