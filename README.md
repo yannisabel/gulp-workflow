@@ -33,6 +33,9 @@ It executes the default task and launch the server.
 I think it's better to show you this workflow in action. So the `index.html` is a kind of documentation and it can help you with some option.
 
 ## Changelog
+* **V1.02** 2016-11-03:
+    * Now Browser reload the page when images and fonts are added to the project.
+    * Add a .gitignore for node_modules
 * **V1.01** 2016-06-22:
     * SASS `@import` with [the official SASS specification](http://sass-lang.com/guide "SASS Guide") for filenames. SASS files are now preceded by an underscore like `_colors.scss`.
     * Fix the directory structure in jade too.
