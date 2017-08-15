@@ -11,13 +11,13 @@
     </head>
 
     <body>
-        <nav role="banner" class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top" role="banner">
             <div class="container">
-                <div class="navbar-header"><button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <div class="navbar-header"><button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     <a
-                        href="/" class="navbar-brand">Yann Isabel</a>
+                        class="navbar-brand" href="/">Yann Isabel</a>
                 </div>
-                <nav role="navigation" class="collapse navbar-collapse">
+                <nav class="collapse navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav">
                         <li><a href="#start" title="Getting Started">Getting Started</a></li>
                         <li><a href="https://github.com/yannisabel/gulp-workflow" title="Download gulp-workflow">Download</a></li>
@@ -31,40 +31,42 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
-                        <h1><span>Documentation&nbsp;:</span><br/>Gulp Workflow with SASS and JADE</h1></div>
-                    <div class="col-md-3 col-md-offset-2"><img src="/images/gulp.png" alt="gulp logo" class="img-responsive"></div>
+                        <h1><span>Documentation&nbsp;:</span><br/>Gulp Workflow with SASS and PUG</h1>
+                    </div>
+                    <div class="col-md-3 col-md-offset-2"><img class="img-responsive" src="/images/gulp.png" alt="gulp logo"></div>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
-                <div id="leftCol" class="col-md-3">
-                    <ul id="sidebar" class="nav nav-stacked">
+                <div class="col-md-3" id="leftCol">
+                    <ul class="nav nav-stacked" id="sidebar">
                         <li><a href="#start" title="Getting Started">1. Getting Started</a></li>
                         <li><a href="#tasks" title="Tasks">2. Tasks</a></li>
-                        <li><a href="#jade" title="Jade doc">3. Jade doc</a></li>
+                        <li><a href="#pug" title="Pug doc">3. Pug doc</a></li>
                         <li><a href="#sass" title="Sass doc">4. Sass doc</a></li>
                     </ul>
                 </div>
                 <div class="col-md-9 content-doc">
                     <h2 id="start">1. Getting Started</h2>
-                    <p><a href="http://gulpjs.com/" title="Gulpjs">Gulp</a> is a Task Runner that can help you to automate your development workflow.<br/>This workflow gathers some cool tasks like compiling <a href="http://jade-lang.com/" title="jade officiel website">JADE</a>                        files into HTML files, compiling <a href="http://sass-lang.com/" title="SASS official website">SASS</a> files into CSS files, minifying images and browser reloading. Let's start with the beginning. If you download or clone the
-                        gulp-workflow here is the structure of the directory :</p><pre>|- gulp-workflow/
+                    <p><a href="http://gulpjs.com/" title="Gulpjs">Gulp</a> is a Task Runner that can help you to automate your development workflow.<br/>This workflow gathers some cool tasks like compiling <a href="https://pugjs.org/" title="pug officiel website">PUG</a>                        files into HTML files, compiling <a href="http://sass-lang.com/" title="SASS official website">SASS</a> files into CSS files, minifying images and browser reloading. Let's start with the beginning. If you download or clone the
+                        gulp-workflow here is the structure of the directory :</p>
+                    <pre>|- gulp-workflow/
 	|- src/
 	    |- fonts/
 	    |- images/
 	    |- js/
 	    |- sass/
 	    |- templates/
-		    |- index.jade       
+		    |- index.pug
 	|- web/
 	    |- fonts/
 	    |- images/
 	    |- js/
 	    |- css/
-	    |- index.html	
+	    |- index.html
 	|- gulpfile.js
-	|- package.json                    
+	|- package.json
 </pre><br>
                     <blockquote>What can we expect to do with Gulp?</blockquote>
                     <p>Almost every task you do in development a thousand time a day. Move files or directory, minify javascript files, concatenate them, prettify your code and much more! Gulp is your Task Runner, it can automatize your workflow.</p>
@@ -78,41 +80,48 @@
                         <p>You will need to leave the server to run this command. The default task is made for run all the tasks and watch all modification. So if you want a refresh you can just modify your files and see what's happening in real time.</p>
                         <h3>Tasks Options</h3>
                         <p>All packages have their own options. Generally you can find them on the <a href="https://www.npmjs.com/" title="NPM officiel website">NPM website</a>. But here is some options:</p>
-                        <p>gulp-cssbeautify</p><pre>indent: '  ' //4 space by default but you can change
+                        <p>gulp-cssbeautify</p>
+                        <pre>indent: '  ' //4 space by default but you can change
 openbrace: 'separate-line' //'end-of-line' by default
 autosemicolon: true //Can be set to false
 </pre>
-                        <p>gulp-cssprettify</p><pre>indent_size: '4' //Can be change by any number
+                        <p>gulp-cssprettify</p>
+                        <pre>indent_size: '4' //Can be change by any number
 preserve_newlines: true //Can be set to false
 </pre>
-                        <p>gulp-sass</p><pre>outputStyle: 'compressed' //Different values : nested, expanded, compact, compressed. 'nested' by default.
+                        <p>gulp-sass</p>
+                        <pre>outputStyle: 'compressed' //Different values : nested, expanded, compact, compressed. 'nested' by default.
 p gulp-cssprettify
 </pre>
-                        <p>gulp-uglify</p><pre>indent_start: 0     // start indentation on every line (only when 'beautify')
+                        <p>gulp-uglify</p>
+                        <pre>indent_start: 0     // start indentation on every line (only when 'beautify')
 indent_level: 4,     // indentation level (only when 'beautify')
 beautify: false, // beautify output?
 bracketize: false, // use brackets every time
 comments: false, // output comments?
 semicolons: true,  // use semicolons to separate statements? (otherwise, newlines)
 </pre>
-                        <h2 id="jade">3. Jade docs</h2>
-                        <p>This documentation is a part of the official documentation. If you want more go to the <a href="http://jade-lang.com/" title="Jade Official Website">Jade website</a>.</p>
+                        <h2 id="pug">3. Pug doc</h2>
+                        <p>This documentation show you some things you can do with Pug. If you want more go to the <a href="https://pugjs.org/" title="Pug Official Website">Pug website</a>.</p>
                         <h3>Tags</h3>
-                        <p>By default, text at the start of a line (or after only white space) represents an html tag. Indented tags are nested, creating the tree like structure of html.</p><pre>ul
+                        <p>By default, text at the start of a line (or after only white space) represents an html tag. Indented tags are nested, creating the tree like structure of html.</p>
+                        <pre>ul
     li Item A
     li Item B
     li Item C</pre>
-                        <p>Output</p><pre>&lt;ul>
-  &lt;li>Item A&lt;/li>
+                        <p>Output</p>
+                        <pre>&lt;ul>  &lt;li>Item A&lt;/li>
   &lt;li>Item B&lt;/li>
   &lt;li>Item C&lt;/li>
 &lt;/ul></pre>
-                        <p>Jade also knows which elements are self closing:</p><code>img</code>
+                        <p>Pug also knows which elements are self closing:</p><code>img</code>
                         <p>Output</p><code>&lt;img/></code>
                         <h3>Attributes</h3>
-                        <p>Tag attributes look similar to html, however their values are just regular JavaScript.</p><pre>a(href='google.com') Google
-a(class='button', href='google.com') Google    </pre>
-                        <p>Output</p><pre>&lt;a href="google.com">Google&lt;/a>&lt;a href="google.com" class="button">Google&lt;/a></pre>
+                        <p>Tag attributes look similar to html, however their values are just regular JavaScript.</p>
+                        <pre>a(href='google.com') Google
+a(class='button', href='google.com') Google</pre>
+                        <p>Output</p>
+                        <pre>&lt;a href="google.com">Google&lt;/a>&lt;a href="google.com" class="button">Google&lt;/a></pre>
                         <h3>Class Literal</h3>
                         <p>Classes may be defined using a .classname syntax:</p><code>a.button</code>
                         <p>Output</p><code>&lt;a class="button">&lt;/a></code>
@@ -120,15 +129,15 @@ a(class='button', href='google.com') Google    </pre>
                         <p>Output</p><code>&lt;div class="content">&lt;/div></code>
                         <p>Same for ID</p>
                         <h3>Unbeffered Code</h3>
-                        <p>Jade makes it possible to write inline JavaScript code in your templates.</p>
-                        <p>Unbuffered code starts with - does not add any output directly, e.g.</p><pre>- for (var x = 0; x < 3; x++)
-li item</pre>
-                        <p>Output</p><pre>&lt;li>item&lt;/li>
-&lt;li>item&lt;/li>
+                        <p>Pug makes it possible to write inline JavaScript code in your templates.</p>
+                        <p>Unbuffered code starts with - does not add any output directly, e.g.</p>
+                        <pre>- for (var x = 0; x < 3; x++)li item</pre>
+                        <p>Output</p>
+                        <pre>&lt;li>item&lt;/li>&lt;li>item&lt;/li>
 &lt;li>item&lt;/li></pre>
                         <h3>Conditionals</h3>
-                        <p>Jade's first-class conditional syntax allows for optional parenthesis, and you may now omit the leading - otherwise it's identical, still just regular javascript:</p><pre>- var user = { description: 'foo bar baz' }
-- var authorised = false<div id="user"></div>  if user.description
+                        <p>Pug's first-class conditional syntax allows for optional parenthesis, and you may now omit the leading - otherwise it's identical, still just regular javascript:</p>
+                        <pre>- var user = { description: 'foo bar baz' }- var authorised = false<div id="user"></div>  if user.description
       h2 Description
       p.description= user.description
   else if authorised
@@ -139,55 +148,55 @@ li item</pre>
   else
       h1 Description
       p.description User has no description</pre>
-                        <p>Output</p><pre>&lt;div id="user">
-   &lt;h2>Description&lt;/h2>
+                        <p>Output</p>
+                        <pre>&lt;div id="user">   &lt;h2>Description&lt;/h2>
    &lt;p class="description">foo bar baz&lt;/p>
 &lt;/div></pre>
-                        <p>There are a lot of things to do with Jade ! Just try it !</p>
-                        <h2 id="sass">4. SASS docs</h2>
+                        <p>There are a lot of things to do with Pug ! Just try it !</p>
+                        <h2 id="sass">4. SASS doc</h2>
                         <p>This documentation is a part of the official documentation. If you want more go to the <a href="http://sass-lang.com/" title="SASS Official Website">Sass website</a>.</p>
                         <h3>Variables</h3>
                         <p>Think of variables as a way to store information that you want to reuse throughout your stylesheet. You can store things like colors, font stacks, or any CSS value you think you'll want to reuse. Sass uses the $ symbol to make
-                            something a variable. Here's an example:</p><pre>$font-stack: Helvetica, sans-serif;
-$primary-color: #333;
- 
+                            something a variable. Here's an example:</p>
+                        <pre>$font-stack: Helvetica, sans-serif;$primary-color: #333;
+
 body {
   font: 100% $font-stack;
   color: $primary-color;
 }</pre>
-                        <p>Output</p><pre>body {
-   font: 100% Helvetica, sans-serif;
+                        <p>Output</p>
+                        <pre>body {   font: 100% Helvetica, sans-serif;
    color: #333;
 }</pre>
                         <h3>Nesting</h3>
                         <p>When writing HTML you've probably noticed that it has a clear nested and visual hierarchy. CSS, on the other hand, doesn't.</p>
                         <p>Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML. Be aware that overly nested rules will result in over-qualified CSS that could prove hard to maintain and is generally considered
                             bad practice.</p>
-                        <p>With that in mind, here's an example of some typical styles for a site's navigation:</p><pre>nav {
-   ul {
+                        <p>With that in mind, here's an example of some typical styles for a site's navigation:</p>
+                        <pre>nav {   ul {
        margin: 0;
        padding: 0;
        list-style: none;
    }
-  
+
    li { display: inline-block; }
-  
+
    a {
        display: block;
        padding: 6px 12px;
        text-decoration: none;
    }
 }</pre>
-                        <p>Output</p><pre>nav ul {
-   margin: 0;
+                        <p>Output</p>
+                        <pre>nav ul {   margin: 0;
    padding: 0;
    list-style: none;
 }
-  
+
 nav li {
    display: inline-block;
 }
-  
+
 nav a {
    display: block;
    padding: 6px 12px;
@@ -195,58 +204,58 @@ nav a {
 }</pre>
                         <h3>mixins</h3>
                         <p>Some things in CSS are a bit tedious to write, especially with CSS3 and the many vendor prefixes that exist. A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values
-                            to make your mixin more flexible. A good use of a mixin is for vendor prefixes. Here's an example for <code>border-radius</code>.</p><pre>@mixin border-radius($radius) {
-   -webkit-border-radius: $radius;
+                            to make your mixin more flexible. A good use of a mixin is for vendor prefixes. Here's an example for <code>border-radius</code>.</p>
+                        <pre>@mixin border-radius($radius) {   -webkit-border-radius: $radius;
    -moz-border-radius: $radius;
    -ms-border-radius: $radius;
    border-radius: $radius;
 }
-  
+
 .box { @include border-radius(10px); }</pre>
                         <p>To create a mixin you use the <code>@mixin</code> directive and give it a name. We've named our mixin border-radius. We're also using the variable <code>$radius</code> inside the parentheses so we can pass in a radius of whatever
-                            we want. After you create your mixin, you can then use it as a CSS declaration starting with <code>@include</code> followed by the name of the mixin. When your CSS is generated it'll look like this:</p><pre>.box {
-   -webkit-border-radius: 10px;
+                            we want. After you create your mixin, you can then use it as a CSS declaration starting with <code>@include</code> followed by the name of the mixin. When your CSS is generated it'll look like this:</p>
+                        <pre>.box {   -webkit-border-radius: 10px;
    -moz-border-radius: 10px;
    -ms-border-radius: 10px;
    border-radius: 10px;
 }</pre>
                         <h3>Extend/Inheritance</h3>
                         <p>This is one of the most useful features of Sass. Using <code>@extend</code> lets you share a set of CSS properties from one selector to another. It helps keep your Sass very DRY. In our example we're going to create a simple series
-                            of messaging for errors, warnings and successes.</p><pre>.message {
-   border: 1px solid #ccc;
+                            of messaging for errors, warnings and successes.</p>
+                        <pre>.message {   border: 1px solid #ccc;
    padding: 10px;
    color: #333;
 }
-  
+
 .success {
    @extend .message;
    border-color: green;
 }
-  
+
 .error {
    @extend .message;
    border-color: red;
 }
-  
+
 .warning {
    @extend .message;
    border-color: yellow;
 }</pre>
                         <p>What the above code does is allow you to take the CSS properties in <code>.message</code> and apply them to <code>.success</code>, <code>.error</code>, & <code>.warning</code>. The magic happens with the generated CSS, and this
-                            helps you avoid having to write multiple class names on HTML elements. This is what it looks like:</p><pre>.message, .success, .error, .warning {
-   border: 1px solid #cccccc;
+                            helps you avoid having to write multiple class names on HTML elements. This is what it looks like:</p>
+                        <pre>.message, .success, .error, .warning {   border: 1px solid #cccccc;
    padding: 10px;
    color: #333;
 }
-  
+
 .success {
    border-color: green;
 }
-  
+
 .error {
    border-color: red;
 }
-  
+
 .warning {
    border-color: yellow;
 }</pre>

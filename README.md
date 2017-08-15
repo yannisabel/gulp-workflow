@@ -1,5 +1,5 @@
-# Gulp Workflow with SASS and JADE
-This workflow gathers some cool tasks like compiling [JADE](http://jade-lang.com/ "JADE official website") files into HTML files, compiling [SASS](http://sass-lang.com/ "SASS official website") files into CSS files, minifying images and browser reloading.
+# Gulp Workflow with SASS and PUG
+This workflow gathers some cool tasks like compiling [PUG](https://pugjs.org/ "PUG official website") files into HTML files, compiling [SASS](http://sass-lang.com/ "SASS official website") files into CSS files, minifying images and browser reloading.
 
 ## 1\. Getting Started
 
@@ -33,6 +33,9 @@ It executes the default task and launch the server.
 I think it's better to show you this workflow in action. So the `index.html` is a kind of documentation and it can help you with some option.
 
 ## Changelog
+* **V1.03** 2017-08-15:
+    * Replace  `gulp-jade` by `gulp-pug`
+    * Fix some `gulpfile.js` errors
 * **V1.02** 2016-11-03:
     * Now Browser reload the page when images and fonts are added to the project.
     * Add a .gitignore for node_modules

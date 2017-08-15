@@ -36,7 +36,7 @@ gulp.task('browserSync', function() {
 // Duplicate fonts folder in webPath
 gulp.task('fonts', function() {
     return gulp.src(devPaths.fonts + '/**/*')
-        .pipe(gulp.dest(webPaths.fonts));
+        .pipe(gulp.dest(webPaths.fonts))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -48,16 +48,16 @@ gulp.task('imagemin', function(){
         .pipe(plugins.cache(plugins.imagemin({
             interlaced: true
         })))
-        .pipe(gulp.dest(webPaths.img));
+        .pipe(gulp.dest(webPaths.img))
         .pipe(browserSync.reload({
             stream: true
         }))
 });
 
-// Compile jade templates to html pages
-gulp.task('jade', function() {
-    return gulp.src(devPaths.tmpl + '/**/*.jade')
-        .pipe(plugins.jade({
+// Compile pug templates to html pages
+gulp.task('pug', function() {
+    return gulp.src(devPaths.tmpl + '/**/*.pug')
+        .pipe(plugins.pug({
 		}))
         .pipe(plugins.prettify({indent_size: 4, preserve_newlines: true }))
         .pipe(gulp.dest(webPaths.tmpl))
@@ -103,10 +103,10 @@ gulp.task('css', function() {
 });
 
 // Default Task
-gulp.task('default', ['browserSync', 'fonts', 'imagemin', 'jade', 'js', 'sass', 'css'], function() {
+gulp.task('default', ['browserSync', 'fonts', 'imagemin', 'pug', 'js', 'sass', 'css'], function() {
     gulp.watch(devPaths.fonts + '**/*', ['fonts']);
     gulp.watch(devPaths.img + '/**/*.+(png|jpg|jpeg|gif|svg)', ['imagemin']);
-    gulp.watch(devPaths.tmpl + '/**/*.jade', ['jade']);
+    gulp.watch(devPaths.tmpl + '/**/*.pug', ['pug']);
     gulp.watch(devPaths.script + '/**/*.js', ['js']);
     gulp.watch(devPaths.styles + '/**/*.scss', ['sass']);
     gulp.watch(devPaths.styles + '/**/*.css', ['css']);
