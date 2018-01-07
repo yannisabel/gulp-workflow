@@ -3,18 +3,17 @@ This workflow gathers some cool tasks like compiling [PUG](https://pugjs.org/ "P
 
 ## 1\. Getting Started
 
-First you need to install [Node.js](https://nodejs.org/en/ "officiel Nodejs website") on your computer. Then open a terminal (Your favorite terminal will be perfect), and now go to the directory base with the following command:
+First you need to install [Node.js](https://nodejs.org/en/ "officiel Nodejs website") on your computer. Then open a terminal (Your favorite terminal will be perfect), and now go to the directory root with the following command:
 
 `cd path/to/the/directory/gulp-workflow`
 
 
 ## 2\. Installation
 
-Here, you can install [NPM](https://www.npmjs.com/ "npmjs official website")(Node Package Manager) dependancies.
-
+Here, you can install dependencies (you need to [install yarn first](https://yarnpkg.com/lang/en/docs/install/ "yarn installation page")).
 Run this command:
 
-`npm install`
+`yarn install`
 
 It installs all dependancies found in the `package.json`.
 
@@ -23,7 +22,7 @@ It installs all dependancies found in the `package.json`.
 
 You need to install gulp globally with this command:
 
-`npm install gulp -g`
+`yarn add gulp -g`
 
 Then just run the following command line:
 
@@ -33,6 +32,10 @@ It executes the default task and launch the server.
 I think it's better to show you this workflow in action. So the `index.html` is a kind of documentation and it can help you with some option.
 
 ## Changelog
+* **V1.04** 2018-01-07:
+    * Replace `npm` by `yarn`
+    * Update `gulp-sass` version (resolve `node-sass` incompatibility with new versions of Node)
+    * Update the doc
 * **V1.03** 2017-08-15:
     * Replace  `gulp-jade` by `gulp-pug`
     * Fix some `gulpfile.js` errors
