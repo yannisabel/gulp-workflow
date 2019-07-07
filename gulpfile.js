@@ -23,92 +23,96 @@ var webPaths = {
     fonts: 'web/fonts'
 };
 
+// Compile pug templates to html pages
+function pug(cb) {
+    gulp
+        .src(devPaths.tmpl + '/**/*.pug')
+        .pipe(plugins.pug({
+        }))
+        .pipe(plugins.prettify({indent_size: 4, preserve_newlines: true }))
+        .pipe(gulp.dest(webPaths.tmpl))
+        .pipe(browserSync.stream())
+        cb()
+}
 
-// Browser synchronisation
-gulp.task('browserSync', function() {
-    browserSync({
-        server: {
-          baseDir: webPaths.tmpl
-        },
-    });
-});
+function sass(cb) {
+    gulp
+        .src(devPaths.styles + '/main.scss')
+        .pipe(plugins.sass({
+            outputStyle: 'compressed',
+            onError: console.error.bind(console, 'Sass error:')
+        }))
+        .pipe(gulp.dest(webPaths.styles))
+        .pipe(browserSync.stream())
+        cb()
+}
+
+// Duplicate css files to the webPath
+function css(cb) {
+    gulp
+        .src(devPaths.styles + '/**/*.css')
+        .pipe(gulp.dest(webPaths.styles))
+        .pipe(browserSync.stream())
+        cb()
+}
+
+// Duplicate main.js file and minify it in the webPath
+function js(cb) {
+    gulp
+        .src(devPaths.script + '/**/*.js')
+        .pipe(plugins.uglify())
+        .pipe(gulp.dest(webPaths.script))
+        .pipe(browserSync.stream())
+        cb()
+}
 
 // Duplicate fonts folder in webPath
-gulp.task('fonts', function() {
-    return gulp.src(devPaths.fonts + '/**/*')
+function fonts(cb) {
+    gulp
+        .src(devPaths.fonts + '/**/*')
         .pipe(gulp.dest(webPaths.fonts))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
-});
+        .pipe(browserSync.stream())
+        cb()
+}
 
 // Duplicate images folder in webPath and minify them
-gulp.task('imagemin', function(){
-    return gulp.src(devPaths.img + '/**/*.+(png|jpg|jpeg|gif|svg)')
+function imagemin(cb) {
+    gulp
+        .src(devPaths.img + '/**/*.+(png|jpg|jpeg|gif|svg)')
         .pipe(plugins.cache(plugins.imagemin({
             interlaced: true
         })))
         .pipe(gulp.dest(webPaths.img))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
-});
+        .pipe(browserSync.stream())
+        cb()
+}
 
-// Compile pug templates to html pages
-gulp.task('pug', function() {
-    return gulp.src(devPaths.tmpl + '/**/*.pug')
-        .pipe(plugins.pug({
-		}))
-        .pipe(plugins.prettify({indent_size: 4, preserve_newlines: true }))
-        .pipe(gulp.dest(webPaths.tmpl))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
-});
+function reload() {
+    browserSync.reload();
+}
 
-// Duplicate main.js file and minify it in the webPath
-gulp.task('js', function() {
-    return gulp.src(devPaths.script + '/**/*.js')
-        .pipe(plugins.uglify())
-        .pipe(gulp.dest(webPaths.script))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
-});
+// Add browsersync initialization at the start of the watch task
+function watch(cb) {
+    browserSync.init({
+        server: {
+            baseDir: webPaths.tmpl
+        }
+    });
+    gulp.watch(devPaths.styles + '/**/*.scss', sass);
+    gulp.watch(devPaths.styles + '/**/*.css', css);
+    gulp.watch(devPaths.base + '/*.pug', pug);
+    gulp.watch(devPaths.fonts + '**/*', fonts);
+    gulp.watch(devPaths.img + '/**/*.+(png|jpg|jpeg|gif|svg)', imagemin);
+    gulp.watch(devPaths.script + '/**/*.js', js);
+    cb()
+}
 
-// Compile sass main file to a css file in webPath
-gulp.task('sass', function() {
-    return gulp.src(devPaths.styles + '/main.scss')
-        .pipe(plugins.sass({
-            precision: 10,
-            onError: console.error.bind(console, 'Sass error:')
-        }))
-        .pipe(plugins.cssbeautify({
-            indent: '  ',
-            autosemicolon: true
-        }))
-        .pipe(gulp.dest(webPaths.styles))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-});
+exports.pug = pug;
+exports.sass = sass;
+exports.css = css;
+exports.js = js;
+exports.fonts = fonts;
+exports.imagemin = imagemin;
+exports.watch = watch
 
-// Duplicate css files to the webPath
-gulp.task('css', function() {
-    return gulp.src(devPaths.styles + '/**/*.css')
-        .pipe(gulp.dest(webPaths.styles))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
-});
-
-// Default Task
-gulp.task('default', ['browserSync', 'fonts', 'imagemin', 'pug', 'js', 'sass', 'css'], function() {
-    gulp.watch(devPaths.fonts + '**/*', ['fonts']);
-    gulp.watch(devPaths.img + '/**/*.+(png|jpg|jpeg|gif|svg)', ['imagemin']);
-    gulp.watch(devPaths.tmpl + '/**/*.pug', ['pug']);
-    gulp.watch(devPaths.script + '/**/*.js', ['js']);
-    gulp.watch(devPaths.styles + '/**/*.scss', ['sass']);
-    gulp.watch(devPaths.styles + '/**/*.css', ['css']);
-
-});
+exports.default = gulp.series(pug, sass, css, js, fonts, imagemin, watch);

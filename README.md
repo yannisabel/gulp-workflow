@@ -32,6 +32,8 @@ It executes the default task and launch the server.
 I think it's better to show you this workflow in action. So the `index.html` is a kind of documentation and it can help you with some option.
 
 ## Changelog
+* **V1.1** 2019-07-07:
+    * Update gulp: 3.9.1 => 4.0.2 (resolve incompatibility Node >= 11)
 * **V1.04** 2018-01-07:
     * Replace `npm` by `yarn`
     * Update `gulp-sass` version (resolve `node-sass` incompatibility with new versions of Node)
